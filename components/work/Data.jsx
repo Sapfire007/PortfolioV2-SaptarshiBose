@@ -1,9 +1,10 @@
 import Work1 from '../../src/assets/Work1.png';
 import Work2 from '../../src/assets/Work2.png';
-import Work3 from '../../src/assets/Work5.png';
+import Work3 from '../../src/assets/PixelPulse_logo.png';
 import Work4 from '../../src/assets/Work4.png';
 import Work5 from '../../src/assets/Work5.png';
 import Work6 from '../../src/assets/Work6.png';
+
 
 export const projectsData = [
 	{
@@ -31,7 +32,7 @@ export const projectsData = [
 		category: 'app',
 		//demoUrl: 'https://github.com/Sapfire007/PixelPulse',
 		sourceUrl: 'https://github.com/Sapfire007/PixelPulse',
-		status: 'development',
+		status: 'completed',
 	},
 	{
 		id: 4,
