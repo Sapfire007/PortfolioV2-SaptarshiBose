@@ -10,8 +10,8 @@ const Contact = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_bcm6m5l', 'template_8asg769', form.current, {
-            publicKey: 'n_pC4tC-5XVRVdDqi',
+        emailjs.sendForm('service_oapmi7g', 'template_8asg769', form.current, {
+            publicKey: 'hzN_U-jAtZDSeHD4U',
         })
         .then(() => {
             // Show the popup notification
