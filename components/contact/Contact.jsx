@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import './contact.css';
 
 const Contact = () => {
+    useEffect(() => {
+        emailjs.init('H1bVFrtM_XxqbqvL0');
+    }, []);
     const form = useRef();
     const [showPopup, setShowPopup] = useState(false);
 
