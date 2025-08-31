@@ -10,7 +10,7 @@ const Contact = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_oapmi7g', 'service_oapmi7g', form.current, {
+        emailjs.sendForm('service_oapmi7g', 'template_8asg769', form.current, {
             publicKey: 'H1bVFrtM_XxqbqvL0',
         })
         .then(() => {
