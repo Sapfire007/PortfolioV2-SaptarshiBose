@@ -1,41 +1,64 @@
 /* eslint-disable no-unused-vars */
-import React, { useRef, useState, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
+import React, { useRef, useState } from 'react';
 import './contact.css';
 
 const Contact = () => {
-    useEffect(() => {
-        emailjs.init('H1bVFrtM_XxqbqvL0');
-    }, []);
+
     const form = useRef();
     const [showPopup, setShowPopup] = useState(false);
 
-    const sendEmail = (e) => {
+    const sendEmail = async (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_oapmi7g', 'template_o6jaous', form.current, {
-            publicKey: 'H1bVFrtM_XxqbqvL0',
-        })
-        .then(() => {
-            // Show the popup notification
-            setShowPopup(true);
-            
-            // Hide the popup after 5 seconds
-            setTimeout(() => {
-                setShowPopup(false);
-            }, 5000);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-        
-        e.target.reset();
+        const formData = new FormData(form.current);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const message = formData.get('message');
+
+        const webhookUrl = "https://discord.com/api/webhooks/1467233317056417987/pfbBuwE-NPLkXMdFz_DNCKO231Jgz8pHnUrw6o68U4LU_D3Ic7ffRK-jzdqJZQ6YdLL_";
+
+        const payload = {
+            embeds: [
+                {
+                    title: "New Contact Form Submission",
+                    color: 5814783,
+                    fields: [
+                        { name: "Name", value: name || "N/A", inline: true },
+                        { name: "Email", value: email || "N/A", inline: true },
+                        { name: "Message", value: message || "N/A" }
+                    ],
+                    timestamp: new Date().toISOString()
+                }
+            ]
+        };
+
+        try {
+            const response = await fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (response.ok) {
+                setShowPopup(true);
+                setTimeout(() => {
+                    setShowPopup(false);
+                }, 5000);
+                e.target.reset();
+            } else {
+                console.error("Failed to send message");
+            }
+        } catch (error) {
+            console.error("Error sending message:", error);
+        }
     };
 
     return (
         <section className="contact section" id="contact">
             <h2 className="section__title">Get In Touch 📩</h2>
-            <span className="section__subtitle">Ready to get started on your project? <br/> Contact me now for a Free consultation.</span>
+            <span className="section__subtitle">Ready to get started on your project? <br /> Contact me now for a Free consultation.</span>
 
             <div className="contact__container container grid">
                 <div className="contact__content">
@@ -69,12 +92,12 @@ const Contact = () => {
                     <form ref={form} onSubmit={sendEmail} className="contact__form">
                         <div className="contact__form-div">
                             <label className="contact__form-tag">Name</label>
-                            <input type="text" name='name' className='contact__form-input' placeholder='Insert Your Name'/>
+                            <input type="text" name='name' className='contact__form-input' placeholder='Insert Your Name' />
                         </div>
 
                         <div className="contact__form-div">
                             <label className="contact__form-tag">Mail</label>
-                            <input type="email" name='email' className='contact__form-input' placeholder='Your Email Address'/>
+                            <input type="email" name='email' className='contact__form-input' placeholder='Your Email Address' />
                         </div>
 
                         <div className="contact__form-div contact__form-area">
