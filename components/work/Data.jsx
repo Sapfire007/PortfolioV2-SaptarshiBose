@@ -54,12 +54,12 @@ export const projectsData = [
 	},
 	{
 		id: 6,
-		image: Work5,
-		title: 'BloodLine.AI',
+		image: Work7,
+		title: 'CarRental',
 		category: 'web',
-		demoUrl: '#',
-		sourceUrl: '#',
-		status: 'development',
+		demoUrl: 'https://car-rental-mu-lake.vercel.app',
+		sourceUrl: 'https://github.com/Sapfire007/CarRental',
+		status: 'completed',
 	},
 ];
 
