@@ -4,6 +4,7 @@ import Work3 from '../../src/assets/PixelPulse_logo.png';
 import Work4 from '../../src/assets/Work4.png';
 import Work5 from '../../src/assets/Work5.png';
 import Work6 from '../../src/assets/Work6.png';
+import Work7 from '../../src/assets/Work6.png';
 
 
 export const projectsData = [
